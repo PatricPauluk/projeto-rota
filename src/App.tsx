@@ -1,7 +1,7 @@
 import * as React from 'react';
-import HomePage from './pages/HomePage'; // <<< O caminho pode variar dependendo da sua estrutura
-import 'leaflet/dist/leaflet.css'; // <<< Mantenha isso AQUI ou em src/main.tsx para ser global
-import './App.css'; // Se você tiver um CSS global para App
+import HomePage from './pages/HomePage';
+import 'leaflet/dist/leaflet.css';
+import './App.css';
 
 function App() {
   return (

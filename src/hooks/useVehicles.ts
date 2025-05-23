@@ -54,7 +54,7 @@ export const useVehicles = ({ filter, type, page, perPage, fetchTrigger }: UseVe
 
       if (!response.ok) {
         const errorText = await response.text();
-        console.error(`Erro na API (${response.status}):`, errorText); // Manter este log de erro
+        console.error(`Erro na API (${response.status}):`, errorText);
         try {
           const errorJson = JSON.parse(errorText);
           throw new Error(`Erro na API (${response.status}): ${errorJson.message || JSON.stringify(errorJson)}`);
