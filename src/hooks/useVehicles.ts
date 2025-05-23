@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { ApiResponse, EnrichedVehicle, LocationVehicle, PaginationMeta } from '../types/Vehicle';
 
-const AUTH_TOKEN = import.meta.env.VITE_AUTH_TOKEN;
+const AUTH_TOKEN = process.env.VITE_AUTH_TOKEN || '';
 
 const API_PROXY_PREFIX = "/recruitment";
 

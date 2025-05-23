@@ -3,7 +3,7 @@ import MapComponent from '../components/MapComponent';
 import { useVehicles } from '../hooks/useVehicles';
 import { EnrichedVehicle } from '../types/Vehicle';
 
-const Maps_API_KEY = import.meta.env.VITE_MAPS_API_KEY;
+const Maps_API_KEY = process.env.VITE_MAPS_API_KEY || '';
 
 const HomePage: React.FC = () => {
   const [filter, setFilter] = useState<string>('');
@@ -18,7 +18,7 @@ const HomePage: React.FC = () => {
     setFetchTrigger(prev => prev + 1);
   }, [filter, currentType]);
 
-
+  console.log('Maps_API_KEY', process.env.VITE_MAPS_API_KEY)
   const {
     data: vehicles,
     isLoading,

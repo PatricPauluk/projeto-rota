@@ -1,20 +1,31 @@
-// vite.config.ts
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import * as dotenv from 'dotenv';
+import 'fs';
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  base: '/',
-  plugins: [react()],
-  server: {
-    port: 5173,
-    proxy: {
-      '/recruitment': {
-        target: 'https://develop-back-rota.rota361.com.br', // <<< CORREÇÃO CRÍTICA AQUI! Usando a URL base da API correta
-        changeOrigin: true,
-        secure: true, // Use 'true' para HTTPS, a menos que você esteja usando um certificado autoassinado que precise ser ignorado
-        rewrite: (path) => path.replace(/^\/recruitment/, ''),
+export default defineConfig(({ command, mode }) => {
+  dotenv.config({ path: '.env' });
+  console.log(command)
+  if (mode === 'production') {
+    dotenv.config({ path: '/etc/secrets/.env' });
+  }
+  return {
+    base: '/',
+    plugins: [react()],
+    define: {
+      'process.env': process.env,
+    },
+    server: {
+      port: 5173,
+      proxy: {
+        '/recruitment': {
+          target: 'https://develop-back-rota.rota361.com.br',
+          changeOrigin: true,
+          secure: true,
+          rewrite: (path) => path.replace(/^\/recruitment/, ''),
+        },
       },
     },
-  },
+  }
 });
