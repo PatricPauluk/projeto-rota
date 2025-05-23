@@ -3,7 +3,7 @@ import { ApiResponse, EnrichedVehicle, LocationVehicle, PaginationMeta } from '.
 
 const AUTH_TOKEN = process.env.VITE_AUTH_TOKEN || '';
 
-const API_PROXY_PREFIX = "/recruitment";
+const API_PROXY_PREFIX = "https://develop-back-rota.rota361.com.br";
 
 interface UseVehiclesProps {
   filter: string;
@@ -36,17 +36,15 @@ export const useVehicles = ({ filter, type, page, perPage, fetchTrigger }: UseVe
     setIsLoading(true);
 
     try {
-      const fullPath = `${API_PROXY_PREFIX}/vehicles/list-with-paginate`;
-      const url = new URL(fullPath, window.location.origin);
-
+      const fullPath = `${API_PROXY_PREFIX}/recruitment/vehicles/list-with-paginate`;
+      const url = new URL(fullPath);
+      console.log('url', url)
       if (filter) url.searchParams.append('filter', filter);
       if (type) url.searchParams.append('type', type);
       url.searchParams.append('page', page.toString());
       url.searchParams.append('perPage', perPage.toString());
 
-      const requestUrl = url.pathname + url.search;
-
-      const response = await fetch(requestUrl, {
+      const response = await fetch(url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
