@@ -23,14 +23,14 @@ const MapComponent: React.FC<MapComponentProps> = ({ apiKey, center, zoom, marke
     libraries: libraries,
   });
 
-  const [map, setMap] = useState<google.maps.Map | null>(null);
+  const [_, setMap] = useState<google.maps.Map | null>(null);
   const [activeMarker, setActiveMarker] = useState<MapMarker | null>(null);
 
   const onLoad = useCallback(function callback(mapInstance: google.maps.Map) {
     setMap(mapInstance);
   }, []);
 
-  const onUnmount = useCallback(function callback(mapInstance: google.maps.Map) {
+  const onUnmount = useCallback(function callback(_: google.maps.Map) {
     setMap(null);
   }, []);
 

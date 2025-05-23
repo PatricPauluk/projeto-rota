@@ -23,6 +23,7 @@ export interface LocationVehicle {
 }
 
 export interface PaginationMeta {
+  totalItems: number;
   totalPages: number;
   page: number;
   perPage: string;

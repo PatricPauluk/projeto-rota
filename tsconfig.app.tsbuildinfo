@@ -1,0 +1,1 @@
+{"root":["./src/App.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/MapComponent.tsx","./src/components/__tests__/MapComponent.test.tsx","./src/hooks/useVehicles.ts","./src/pages/HomePage.tsx","./src/types/Vehicle.ts","./src/types/testing-library.d.ts"],"errors":true,"version":"5.8.3"}

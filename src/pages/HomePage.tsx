@@ -21,7 +21,6 @@ const HomePage: React.FC = () => {
 
   const {
     data: vehicles,
-    meta,
     isLoading,
     isError,
     error,
